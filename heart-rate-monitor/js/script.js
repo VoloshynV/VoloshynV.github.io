@@ -47,3 +47,38 @@ catalogTabs.forEach(function (btn, idx) {
         catalogContents[idx].classList.add('catalog__content_active');
     });
 });
+
+// Modal -
+
+const btnConsultationEl = document.querySelectorAll('[data-modal="consultation"]');
+const modalEl = document.querySelector('.modal');
+const consultationEl = document.querySelector('#consultation');
+const orderEl = document.querySelector('#order');
+const thnxEl = document.querySelector('#thnx');
+const closeEl = document.querySelectorAll('.close');
+const btnCatalogItemEl = document.querySelectorAll('.catalog-item__btn');
+const catalogItemEl = document.querySelectorAll('.catalog-item .catalog-item__subtitle');
+
+btnConsultationEl.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        modalEl.classList.add("modal_active");
+        consultationEl.classList.add("modal-item_active");
+    });
+});
+
+btnCatalogItemEl.forEach((element, idx) => {
+    element.addEventListener('click', () => {
+        const subTitleEl = orderEl.querySelector('.modal__subtitle');
+        subTitleEl.textContent = catalogItemEl[idx].textContent;
+        modalEl.classList.add("modal_active");
+        orderEl.classList.add("modal-item_active");
+    });
+});
+closeEl.forEach(element => {
+    element.addEventListener('click', () => {
+        consultationEl.classList.remove("modal-item_active");
+        orderEl.classList.remove("modal-item_active");
+        thnxEl.classList.remove("modal-item_active");
+        modalEl.classList.remove("modal_active");
+    });
+});

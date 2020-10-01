@@ -1,3 +1,10 @@
+@keyframes showBlock
+    0%
+        opacity: 0
+        top: 70px
+    100% 
+        opacity: 1
+        top: 0
 .modal
     position: fixed
     top: 0
@@ -12,22 +19,26 @@
         align-items: center
     &-item
         position: relative
-        display: flex
+        display: none
         flex-direction: column
         align-items: center
         width: 380px
         padding: 38px 0 40px 
         color: #0d0d0d
         background-color: #f2f2f2
-        &::after
-            content: "\274C"
-            position: absolute
-            top: 0 
-            right: -40px
-            font-size: 21px
-            width: 21px
-            height: 21px
-            line-height: 21px
+        &_active
+            display: flex
+            animation: showBlock .3s ease forwards
+    .close
+        position: absolute
+        top: -2px
+        right: -37px
+        font-size: 30px
+        width: 21px
+        height: 30px
+        line-height: 21px
+        color: red
+        cursor: pointer
     &__title
         font-size: 19px
         line-height: 19px
